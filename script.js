@@ -282,4 +282,41 @@ openBtn.addEventListener("click",()=>{
 
 });
 
-console.log("Wedding Invitation Loaded ❤️");
+// ===============================
+// سقوط القلوب باستمرار
+// ===============================
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "-40px";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.pointerEvents = "none";
+    heart.style.zIndex = "9999";
+
+    document.body.appendChild(heart);
+
+    let pos = -40;
+    let speed = 1 + Math.random() * 2;
+
+    const fall = setInterval(() => {
+
+        pos += speed;
+        heart.style.top = pos + "px";
+
+        if(pos > window.innerHeight + 50){
+            clearInterval(fall);
+            heart.remove();
+        }
+
+    },20);
+
+}
+
+// إنشاء قلب جديد كل 300 مللي ثانية
+setInterval(createHeart,300);
