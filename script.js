@@ -1,89 +1,138 @@
-// ===============================
-// العناصر الأساسية
-// ===============================
+// =====================================
+// Wedding Invitation Script
+// =====================================
 
+// العناصر الأساسية
 const openBtn = document.getElementById("openBtn");
 const loading = document.querySelector(".loading");
 const content = document.querySelector(".content");
 const music = document.getElementById("music");
 
-// ===============================
+const cover = document.querySelector(".cover");
+const paper = document.querySelector(".paper");
+
+// =====================================
+// تأثير القلوب
+// =====================================
+
+let heartInterval = null;
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.innerHTML = "🤍";
+
+    heart.style.position = "fixed";
+    heart.style.left = Math.random()*100+"vw";
+    heart.style.top = "-30px";
+
+    heart.style.fontSize =
+    (12+Math.random()*10)+"px";
+
+    heart.style.opacity=".35";
+
+    heart.style.pointerEvents="none";
+
+    heart.style.zIndex="-1";
+
+    document.body.appendChild(heart);
+
+    let y=-30;
+
+    let speed=.8+Math.random();
+
+    const move=setInterval(()=>{
+
+        y+=speed;
+
+        heart.style.top=y+"px";
+
+        if(y>window.innerHeight+50){
+
+            clearInterval(move);
+
+            heart.remove();
+
+        }
+
+    },20);
+
+}
+
+// =====================================
 // فتح الظرف
-// ===============================
+// =====================================
 
-openBtn.addEventListener("click", () => {
+openBtn.addEventListener("click",()=>{
 
-    const cover = document.querySelector(".cover");
-    const paper = document.querySelector(".paper");
+    cover.style.transform="rotateX(180deg)";
 
-    cover.style.transform = "rotateX(180deg)";
-    paper.style.transform = "translateY(-120px)";
+    paper.style.transform="translateY(-120px)";
 
-    setTimeout(() => {
+    if(!heartInterval){
 
-        loading.style.opacity = "0";
+        heartInterval=setInterval(createHeart,1500);
 
-    }, 1000);
+    }
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
-        loading.style.display = "none";
-        content.style.display = "block";
+        loading.style.opacity="0";
 
-        music.play().catch(() => {});
+    },900);
 
-    }, 1700);
+    setTimeout(()=>{
+
+        loading.style.display="none";
+
+        content.style.display="block";
+
+        music.play().catch(()=>{});
+
+    },1700);
 
 });
 
-// ===============================
+// =====================================
 // العد التنازلي
-// ===============================
+// =====================================
 
-const weddingDate = new Date("August 21, 2026 19:00:00").getTime();
+const weddingDate=new Date(
+"August 21, 2026 19:00:00"
+).getTime();
 
-const countdown = document.getElementById("countdown");
+const countdown=document.getElementById("countdown");
 
-const timer = setInterval(() => {
+setInterval(()=>{
 
-    const now = new Date().getTime();
+    const now=new Date().getTime();
 
-    const distance = weddingDate - now;
+    const distance=weddingDate-now;
 
-    if (distance <= 0) {
+    if(distance<0){
 
-        countdown.innerHTML = "🎉 بدأ الحفل";
-
-        clearInterval(timer);
+        countdown.innerHTML="🎉 بدأ الحفل";
 
         return;
 
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const days=Math.floor(distance/(1000*60*60*24));
 
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
-    );
+    const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
 
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
-        / (1000 * 60)
-    );
+    const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
 
-    const seconds = Math.floor(
-        (distance % (1000 * 60))
-        / 1000
-    );
+    const seconds=Math.floor((distance%(1000*60))/1000);
 
-    countdown.innerHTML =
-        `${days} يوم : ${hours} ساعة : ${minutes} دقيقة : ${seconds} ثانية`;
+    countdown.innerHTML=
+`${days} يوم : ${hours} ساعة : ${minutes} دقيقة : ${seconds} ثانية`;
 
-}, 1000);
-// ===============================
+},1000);
+// =====================================
 // رسائل التهنئة
-// ===============================
+// =====================================
 
 let messages = JSON.parse(localStorage.getItem("messages")) || [];
 
@@ -95,18 +144,14 @@ function sendMessage() {
     const message = document.getElementById("message").value.trim();
 
     if (name === "" || message === "") {
-
         alert("من فضلك اكتب اسمك ورسالتك ❤️");
         return;
-
     }
 
     messages.unshift({
-
         name: name,
         message: message,
-        date: new Date().toLocaleString("ar-EG")
-
+        date: new Date().toLocaleDateString("ar-EG")
     });
 
     localStorage.setItem("messages", JSON.stringify(messages));
@@ -115,50 +160,43 @@ function sendMessage() {
     document.getElementById("message").value = "";
 
     showMessages();
-
 }
 
 function showMessages() {
 
-    const box = document.getElementById("allMessages");
+    const allMessages = document.getElementById("allMessages");
 
-    box.innerHTML = "";
+    allMessages.innerHTML = "";
 
     messages.forEach(item => {
 
-        box.innerHTML += `
-
+        allMessages.innerHTML += `
         <div class="msg">
-
             <h3>💖 ${item.name}</h3>
-
             <p>${item.message}</p>
-
             <small>${item.date}</small>
-
         </div>
-
         `;
 
     });
 
 }
 
-// ===============================
+// =====================================
 // ظهور الكروت أثناء النزول
-// ===============================
+// =====================================
 
 const cards = document.querySelectorAll(".card");
 
 cards.forEach(card => {
 
     card.style.opacity = "0";
-    card.style.transform = "translateY(70px)";
-    card.style.transition = "1s";
+    card.style.transform = "translateY(60px)";
+    card.style.transition = ".8s";
 
 });
 
-window.addEventListener("scroll", () => {
+function revealCards() {
 
     cards.forEach(card => {
 
@@ -173,43 +211,34 @@ window.addEventListener("scroll", () => {
 
     });
 
-});
-// ===============================
-// مؤثرات إضافية
-// ===============================
+}
 
-// تأثير بسيط عند الضغط على الأزرار
-document.querySelectorAll("button,.btn").forEach(btn => {
+window.addEventListener("scroll", revealCards);
 
-    btn.addEventListener("click", () => {
-
-        btn.style.transform = "scale(.95)";
-
-        setTimeout(() => {
-
-            btn.style.transform = "scale(1)";
-
-        },150);
-
-    });
-
-});
-
-// ===============================
-// ظهور تدريجي للعناصر
-// ===============================
+revealCards();
+// =====================================
+// ظهور الأقسام الأخرى
+// =====================================
 
 const sections = document.querySelectorAll(
 ".gallery,.messages,.thanks"
 );
 
+sections.forEach(section=>{
+
+    section.style.opacity="0";
+    section.style.transform="translateY(60px)";
+    section.style.transition="1s";
+
+});
+
 function revealSections(){
 
     sections.forEach(section=>{
 
-        const top = section.getBoundingClientRect().top;
+        const top=section.getBoundingClientRect().top;
 
-        if(top < window.innerHeight-120){
+        if(top<window.innerHeight-100){
 
             section.style.opacity="1";
             section.style.transform="translateY(0)";
@@ -220,109 +249,49 @@ function revealSections(){
 
 }
 
-sections.forEach(section=>{
-
-    section.style.opacity="0";
-
-    section.style.transform="translateY(60px)";
-
-    section.style.transition="1s";
-
-});
-
 window.addEventListener("scroll",revealSections);
 
 revealSections();
 
 
-// ===============================
-// تأثير سقوط القلوب
-// ===============================
+// =====================================
+// تأثير الأزرار
+// =====================================
 
-function createHeart(){
+document.querySelectorAll("button,.btn").forEach(btn=>{
 
-    const heart = document.createElement("div");
+    btn.addEventListener("click",()=>{
 
-    heart.innerHTML = "❤️";
+        btn.style.transform="scale(.95)";
 
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * 10 + "px";
-    heart.style.top = "-30px";
-    heart.style.fontSize = (12 + "px";
-    heart.style.pointerEvents = "none";
-    heart.style.zIndex = "-1";
-    heart.style.transition = "4s linear";
+        setTimeout(()=>{
 
-    document.body.appendChild(heart);
+            btn.style.transform="scale(1)";
 
-    setTimeout(()=>{
+        },150);
 
-        heart.style.top="110vh";
-        heart.style.opacity="0.5";
+    });
 
-    },50);
+});
 
-    setTimeout(()=>{
 
-        heart.remove();
+// =====================================
+// إيقاف القلوب عند إغلاق الصفحة
+// =====================================
 
-    },4000);
+window.addEventListener("beforeunload",()=>{
 
-}
+    if(heartInterval){
 
-// عند فتح الظرف تظهر القلوب
-
-openBtn.addEventListener("click",()=>{
-
-    for(let i=0;i<30;i++){
-
-        setTimeout(createHeart,i*120);
+        clearInterval(heartInterval);
 
     }
 
 });
 
-// ===============================
-// سقوط القلوب باستمرار
-// ===============================
 
-function createHeart(){
+// =====================================
+// رسالة في الـ Console
+// =====================================
 
-    const heart = document.createElement("div");
-
-    heart.innerHTML = "❤️";
-
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * 10 + "px";
-    heart.style.top = "-30px";
-    heart.style.fontSize = (12 + "px";
-    heart.style.pointerEvents = "none";
-    heart.style.zIndex = "-1";
-    heart.style.transition = "4s linear";
-
-    document.body.appendChild(heart);
-
-    let pos = -40;
-    let speed = 0.8 + Math.random() * 0.8;
-
-    const fall = setInterval(() => {
-
-        pos += speed;
-        heart.style.top = pos + "px";
-
-        if(pos > window.innerHeight + 50){
-            clearInterval(fall);
-            heart.remove();
-        }
-
-    },20);
-
-}
-
-let heartInterval;
-
-openBtn.addEventListener("click", () => {
-
-    heartInterval = setInterval(createHeart, 1500);
-
-});
+console.log("❤️ Wedding Invitation Loaded Successfully ❤️");
