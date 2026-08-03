@@ -319,4 +319,4 @@ function createHeart(){
 }
 
 // إنشاء قلب جديد كل 300 مللي ثانية
-setInterval(createHeart,300);
+setInterval(createHeart,1000);
