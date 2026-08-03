@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>دعوة زفاف</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- شاشة البداية -->
+
+<div class="loading">
+
+<div class="envelope" id="openBtn">
+
+<div class="cover"></div>
+
+<div class="paper">
+
+<h2>💌</h2>
+
+<p>اضغط لفتح الدعوة</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- الموقع -->
+
+<div class="content">
+
+<section class="hero">
+
+<h3>بسم الله الرحمن الرحيم</h3>
+
+<h1>Ahmed ❤️ Sara</h1>
+
+<p>
+
+يسعدنا دعوتكم لحضور حفل زفافنا
+
+</p>
+
+<a href="#details" class="btn">
+
+تفاصيل الحفل
+
+</a>
+
+</section>
+
+<section id="details">
+
+<div class="card">
+
+<h2>📅 موعد الحفل</h2>
+
+<p>
+
+الجمعة 21 أغسطس 2026
+
+</p>
+
+<p>
+
+الساعة 7:00 مساءً
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📍 مكان الحفل</h2>
+
+<p>
+
+قاعة Jewel - التجمع الخامس
+
+</p>
+
+<a href="https://maps.app.goo.gl/X4G525R5BZPeMANu5" target="_blank">
+
+عرض الموقع
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+⏳ العد التنازلي
+
+</h2>
+
+<div id="countdown">
+
+00 : 00 : 00 : 00
+
+</div>
+
+</div>
+
+</section>
+
+<section class="gallery">
+
+<h2>
+
+📸 صور من الذكريات
+
+</h2>
+
+<div class="images">
+
+<img src="images/1.jpg">
+
+<img src="images/2.jpg">
+
+<img src="images/3.jpg">
+
+<img src="images/4.jpg">
+
+</div>
+
+</section>
+<section class="messages">
+
+<h2>💌 اترك تهنئتك للعروسين</h2>
+
+<input type="text" id="name" placeholder="اكتب اسمك">
+
+<textarea id="message" placeholder="اكتب رسالتك للعروسين"></textarea>
+
+<button onclick="sendMessage()">إرسال التهنئة</button>
+
+<div id="allMessages"></div>
+
+</section>
+
+<section class="thanks">
+
+<h2>❤️ شكراً لحضوركم ❤️</h2>
+
+<p>
+
+وجودكم معنا هو أجمل هدية وأعظم فرحة لنا.
+
+نسأل الله أن يديم المحبة بيننا ويجمعنا دائماً على الخير.
+
+نتمنى أن تشاركونا هذه اللحظة الجميلة، وننتظر لقاءكم بكل حب.
+
+</p>
+
+</section>
+
+</div>
+
+<audio id="music" loop>
+
+<source src="music/music.mp3" type="audio/mp3">
+
+</audio>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
