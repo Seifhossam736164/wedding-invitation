@@ -246,11 +246,11 @@ function createHeart(){
     heart.innerHTML = "❤️";
 
     heart.style.position = "fixed";
-    heart.style.left = Math.random()*100 + "vw";
+    heart.style.left = Math.random() * 10 + "px";
     heart.style.top = "-30px";
-    heart.style.fontSize = (20 + Math.random()*20) + "px";
+    heart.style.fontSize = (12 + "px";
     heart.style.pointerEvents = "none";
-    heart.style.zIndex = "99999";
+    heart.style.zIndex = "-1";
     heart.style.transition = "4s linear";
 
     document.body.appendChild(heart);
@@ -258,7 +258,7 @@ function createHeart(){
     setTimeout(()=>{
 
         heart.style.top="110vh";
-        heart.style.opacity="0";
+        heart.style.opacity="0.5";
 
     },50);
 
@@ -293,16 +293,17 @@ function createHeart(){
     heart.innerHTML = "❤️";
 
     heart.style.position = "fixed";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "-40px";
-    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.left = Math.random() * 10 + "px";
+    heart.style.top = "-30px";
+    heart.style.fontSize = (12 + "px";
     heart.style.pointerEvents = "none";
-    heart.style.zIndex = "9999";
+    heart.style.zIndex = "-1";
+    heart.style.transition = "4s linear";
 
     document.body.appendChild(heart);
 
     let pos = -40;
-    let speed = 1 + Math.random() * 2;
+    let speed = 0.8 + Math.random() * 0.8;
 
     const fall = setInterval(() => {
 
@@ -318,5 +319,10 @@ function createHeart(){
 
 }
 
-// إنشاء قلب جديد كل 300 مللي ثانية
-setInterval(createHeart,1000);
+let heartInterval;
+
+openBtn.addEventListener("click", () => {
+
+    heartInterval = setInterval(createHeart, 1500);
+
+});
