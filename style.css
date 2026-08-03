@@ -1,0 +1,479 @@
+/* ===========================
+   إعدادات عامة
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Cairo',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fdfaf5;
+    color:#444;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* ===========================
+   شاشة البداية
+=========================== */
+
+.loading{
+
+    position:fixed;
+
+    width:100%;
+
+    height:100vh;
+
+    background:linear-gradient(135deg,#fffdf8,#f5e8d3);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+/* ===========================
+      الظرف
+=========================== */
+
+.envelope{
+
+    width:320px;
+
+    height:220px;
+
+    position:relative;
+
+    cursor:pointer;
+
+    transition:.5s;
+
+}
+
+.envelope:hover{
+
+    transform:scale(1.05);
+
+}
+
+.cover{
+
+    position:absolute;
+
+    width:100%;
+
+    height:110px;
+
+    background:#d8b26e;
+
+    clip-path:polygon(0 0,100% 0,50% 100%);
+
+    transform-origin:top;
+
+    transition:1s;
+
+    z-index:5;
+
+}
+
+.paper{
+
+    position:absolute;
+
+    width:90%;
+
+    height:170px;
+
+    left:5%;
+
+    bottom:10px;
+
+    background:white;
+
+    border-radius:10px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    transition:1s;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+
+}
+
+.paper h2{
+
+    font-size:45px;
+
+    margin-bottom:10px;
+
+}
+
+.paper p{
+
+    color:#777;
+
+    font-size:20px;
+
+}
+/* ===========================
+   الموقع
+=========================== */
+
+.content{
+    display:none;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:40px 20px;
+    background:linear-gradient(to bottom,#fffaf2,#f8eddc);
+}
+
+.hero h3{
+    color:#b88b2a;
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:65px;
+    color:#7b5a1d;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:24px;
+    color:#666;
+    margin-bottom:40px;
+}
+
+.btn{
+
+    background:#d9b65d;
+
+    color:white;
+
+    padding:15px 35px;
+
+    border-radius:40px;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#c79c39;
+
+}
+
+/* ===========================
+      الكروت
+=========================== */
+
+#details{
+
+    padding:80px 20px;
+
+}
+
+.card{
+
+    width:90%;
+
+    max-width:700px;
+
+    margin:30px auto;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+}
+
+.card h2{
+
+    color:#b88b2a;
+
+    margin-bottom:20px;
+
+}
+
+.card p{
+
+    margin:10px 0;
+
+    font-size:22px;
+
+}
+
+.card a{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    background:#d9b65d;
+
+    color:white;
+
+    padding:12px 30px;
+
+    border-radius:30px;
+
+}
+
+/* ===========================
+   العد التنازلي
+=========================== */
+
+#countdown{
+
+    font-size:35px;
+
+    color:#b88b2a;
+
+    margin-top:20px;
+
+}
+/* ===========================
+   معرض الصور
+=========================== */
+
+.gallery{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.gallery h2{
+    color:#b88b2a;
+    margin-bottom:35px;
+    font-size:38px;
+}
+
+.images{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.images img{
+    width:280px;
+    height:350px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    transition:.4s;
+}
+
+.images img:hover{
+    transform:scale(1.05);
+}
+
+/* ===========================
+   رسائل التهنئة
+=========================== */
+
+.messages{
+
+    width:90%;
+
+    max-width:800px;
+
+    margin:80px auto;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.messages h2{
+
+    text-align:center;
+
+    color:#b88b2a;
+
+    margin-bottom:25px;
+
+}
+
+.messages input,
+.messages textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    margin:10px 0;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+}
+
+.messages textarea{
+
+    height:150px;
+
+    resize:none;
+
+}
+
+.messages button{
+
+    width:100%;
+
+    background:#d9b65d;
+
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    font-size:20px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+}
+
+.messages button:hover{
+
+    background:#c79c39;
+
+}
+
+.msg{
+
+    background:#faf7f0;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    margin-top:20px;
+
+    border-right:5px solid #d9b65d;
+
+}
+
+/* ===========================
+   الرسالة الأخيرة
+=========================== */
+
+.thanks{
+
+    margin-top:100px;
+
+    background:#f5ead6;
+
+    text-align:center;
+
+    padding:80px 25px;
+
+}
+
+.thanks h2{
+
+    color:#b88b2a;
+
+    font-size:40px;
+
+    margin-bottom:25px;
+
+}
+
+.thanks p{
+
+    max-width:800px;
+
+    margin:auto;
+
+    line-height:2;
+
+    font-size:22px;
+
+    color:#555;
+
+}
+
+/* ===========================
+   الموبايل
+=========================== */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:40px;
+}
+
+.hero p{
+    font-size:20px;
+}
+
+.images img{
+    width:95%;
+    height:auto;
+}
+
+.card{
+    width:95%;
+}
+
+#countdown{
+    font-size:26px;
+}
+
+.messages{
+    width:95%;
+}
+
+}
