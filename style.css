@@ -480,23 +480,25 @@ img{
 
 .designer{
 
-    background:#f8f3e8;
+    background:#f4e6c5;
 
     text-align:center;
 
-    padding:12px;
+    padding:30px 20px;
 
-    margin-top:40px;
+    margin-top:80px;
 
-    font-size:14px;
+    border-top:2px solid #d9b65d;
 
 }
 
 .designer p{
 
-    margin:3px 0;
+    font-size:20px;
 
-    color:#666;
+    color:#555;
+
+    margin:8px 0;
 
 }
 
@@ -513,5 +515,11 @@ img{
     text-decoration:none;
 
     font-weight:bold;
+
+}
+
+.designer a:hover{
+
+    text-decoration:underline;
 
 }
