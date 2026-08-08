@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>دعوة زفاف</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+</head>
+
+<body>
+
+<!-- الصفحة الأولى -->
+
+<div class="welcome-screen" id="welcomeScreen">
+
+    <div class="invite-card">
+
+        <div class="top-heart">
+            ❤️
+        </div>
+
+        <h1>Saif</h1>
+
+        <span class="and">&</span>
+
+        <h1>Sally</h1>
+
+        <p class="date">
+            21 August 2026
+        </p>
+
+        <p class="text">
+            ندعوكم بكل حب لحضور حفل زفافنا
+        </p>
+
+        <button id="openBtn">
+            Open
+        </button>
+
+    </div>
+
+</div>
+
+<!-- زر الموسيقى -->
+
+<button id="musicBtn">
+
+<i class="fa-solid fa-volume-high"></i>
+
+</button>
+
+<!-- الموقع -->
+
+<div class="content">
+
+<section class="hero">
+
+<h3>بسم الله الرحمن الرحيم</h3>
+
+<h1>Saif ❤️ Sally</h1>
+
+<p>
+
+يسعدنا دعوتكم لحضور حفل زفافنا
+
+</p>
+
+<a href="#details" class="btn">
+
+تفاصيل الحفل
+
+</a>
+
+</section>
+
+<section id="details">
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-calendar-days"></i>
+موعد الحفل
+</h2>
+
+<p>
+الجمعة 21 أغسطس 2026
+</p>
+
+<p>
+الساعة 7:00 مساءً
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+<i class="fa-solid fa-location-dot"></i>
+
+مكان الحفل
+
+</h2>
+
+<p>
+
+قاعة Jewel - التجمع الخامس
+
+</p>
+
+<a href="https://maps.app.goo.gl/X4G525R5BZPeMANu5" target="_blank">
+
+عرض الموقع
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+<i class="fa-solid fa-hourglass-half"></i>
+
+العد التنازلي
+
+</h2>
+
+<div id="countdown">
+
+00 : 00 : 00 : 00
+
+</div>
+
+</div>
+
+</section>
+
+<section class="gallery">
+
+<h2>
+
+<i class="fa-solid fa-images"></i>
+
+صور من الذكريات
+
+</h2>
+
+<div class="images">
+
+<img src="images.jpg">
+
+<img src="imagess.jpg">
+
+</div>
+
+</section>
+
+<section class="messages">
+
+<h2>
+
+<i class="fa-solid fa-envelope-open"></i>
+
+اترك تهنئتك للعروسين
+
+</h2>
+
+<input id="name" type="text" placeholder="اكتب اسمك">
+
+<textarea id="message" placeholder="اكتب رسالتك"></textarea>
+
+<button onclick="sendMessage()">
+
+إرسال
+
+</button>
+
+<div id="allMessages"></div>
+
+</section>
+
+<section class="thanks">
+
+<h2>
+
+❤️ شكراً لحضوركم ❤️
+
+</h2>
+
+<p>
+
+وجودكم معنا هو أجمل هدية لنا ❤️
+
+</p>
+
+</section>
+
+<footer>
+
+<p>
+
+هذا الموقع مصمم من قبل
+
+<strong>
+
+سيف حسام
+
+</strong>
+
+</p>
+
+<p>
+
+<a href="tel:01008504327">
+
+01008504327
+
+</a>
+
+</p>
+
+</footer>
+
+</div>
+
+<audio id="music" loop>
+
+<source src="omkl.mp3" type="audio/mpeg">
+
+</audio>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
