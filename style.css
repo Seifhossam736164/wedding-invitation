@@ -1,6 +1,6 @@
-/* =====================================
-   إعدادات عامة
-===================================== */
+/* =========================================
+   Wedding Invitation - Premium Style
+========================================= */
 
 *{
     margin:0;
@@ -14,8 +14,8 @@ html{
 }
 
 body{
-    background:#fdfaf6;
-    color:#444;
+    background:#fbf8f2;
+    color:#403d38;
     overflow-x:hidden;
 }
 
@@ -23,692 +23,1179 @@ a{
     text-decoration:none;
 }
 
+button,
+input,
+textarea{
+    font-family:'Cairo',sans-serif;
+}
+
 img{
-    display:block;
     max-width:100%;
+    display:block;
 }
 
-.content{
-    display:none;
-}
+/* =========================================
+   شاشة البداية
+========================================= */
 
-/* =====================================
-   الصفحة الأولى
-===================================== */
-
-.welcome-screen{
-
+.welcome-card{
     position:fixed;
     inset:0;
 
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
 
-    background:#fdfaf6;
-
-    z-index:99999;
-
-}
-
-.invite-card{
-
-    width:400px;
-    max-width:92%;
-
-    background:#fff;
-
-    border-radius:22px;
-
-    padding:40px 20px 20px;
-
     text-align:center;
 
-    position:relative;
+    background:
+        radial-gradient(
+            circle at top,
+            #fffdf8 0%,
+            #f8eee0 45%,
+            #ead9bd 100%
+        );
 
-    box-shadow:0 20px 45px rgba(0,0,0,.25);
+    z-index:9999;
 
+    overflow:hidden;
+
+    padding:30px;
 }
 
-.top-heart{
+/* زخرفة خلفية */
+
+.welcome-card::before{
+    content:"";
 
     position:absolute;
 
-    top:-35px;
-    left:50%;
+    width:420px;
+    height:420px;
 
-    transform:translateX(-50%);
-
-    width:90px;
-    height:90px;
+    border:1px solid rgba(184,139,42,.18);
 
     border-radius:50%;
 
-    background:#b58b38;
+    top:-180px;
+    left:-160px;
+}
+
+.welcome-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border:1px solid rgba(184,139,42,.15);
+
+    border-radius:50%;
+
+    bottom:-260px;
+    right:-220px;
+}
+
+/* =========================================
+   دائرة القلب
+========================================= */
+
+.heart-circle{
+    width:105px;
+    height:105px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #c9a45b,
+            #a97d2e
+        );
+
+    color:white;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    color:#fff;
+    font-size:42px;
 
-    font-size:38px;
+    margin-bottom:28px;
+
+    box-shadow:
+        0 15px 35px rgba(120,88,32,.22);
+
+    position:relative;
+
+    z-index:2;
+
+    animation:pulseHeart 2.5s infinite;
+}
+
+@keyframes pulseHeart{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
 
 }
 
-.invite-card h1{
+/* =========================================
+   أسماء العروسين
+========================================= */
 
-    color:#b58b38;
+.welcome-card h1{
+    color:#765b2c;
 
-    font-size:55px;
+    font-family:Georgia,serif;
 
-    margin:10px 0;
+    font-size:58px;
 
+    font-weight:500;
+
+    letter-spacing:2px;
+
+    line-height:1.1;
+
+    position:relative;
+
+    z-index:2;
 }
 
 .and{
-
-    display:block;
-
-    margin:10px 0;
-
-    color:#b58b38;
+    font-family:Georgia,serif;
 
     font-size:30px;
 
+    color:#b28a3c;
+
+    margin:10px 0;
+
+    position:relative;
+
+    z-index:2;
 }
 
 .date{
+    color:#786b58;
 
-    margin-top:20px;
+    font-size:19px;
 
-    color:#b58b38;
+    letter-spacing:2px;
 
-    font-size:24px;
+    margin-top:25px;
 
+    position:relative;
+
+    z-index:2;
 }
 
-.text{
+.invite{
+    color:#8a8175;
 
-    margin:25px 0;
+    font-size:17px;
 
-    color:#b58b38;
+    margin:15px 0 28px;
 
-    font-size:22px;
+    position:relative;
 
-    line-height:1.8;
-
+    z-index:2;
 }
+
+/* =========================================
+   زر Open
+========================================= */
 
 #openBtn{
 
-    width:220px;
-
-    height:58px;
-
     border:none;
+
+    padding:14px 55px;
 
     border-radius:50px;
 
-    background:#b58b38;
+    background:
+        linear-gradient(
+            135deg,
+            #c8a45d,
+            #a98032
+        );
 
-    color:#fff;
+    color:white;
 
-    font-size:22px;
+    font-size:19px;
 
     cursor:pointer;
+
+    box-shadow:
+        0 10px 25px rgba(135,98,35,.22);
 
     transition:.3s;
 
+    position:relative;
+
+    z-index:2;
 }
 
 #openBtn:hover{
+    transform:translateY(-3px);
 
-    transform:scale(1.05);
-
+    box-shadow:
+        0 15px 30px rgba(135,98,35,.3);
 }
 
-/* زر الموسيقى */
-
-#musicBtn{
-
-    position:fixed;
-
-    bottom:20px;
-
-    right:20px;
-
-    width:60px;
-
-    height:60px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#b58b38;
-
-    color:#fff;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-    z-index:999999;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-
+#openBtn:active{
+    transform:scale(.96);
 }
-/* =====================================
-   الواجهة الرئيسية
-===================================== */
+
+/* =========================================
+   الموقع الرئيسي
+========================================= */
+
+.content{
+    display:none;
+
+    position:relative;
+
+    z-index:1;
+}
+
+/* =========================================
+   الصفحة الرئيسية
+========================================= */
 
 .hero{
-
     min-height:100vh;
 
     display:flex;
     justify-content:center;
     align-items:center;
+
     flex-direction:column;
 
     text-align:center;
 
-    padding:40px 20px;
+    padding:50px 20px;
 
-    background:linear-gradient(to bottom,#fffdf8,#f8f1e7);
+    background:
+        radial-gradient(
+            circle at center,
+            #fffdf9 0%,
+            #f8efe1 70%,
+            #f1e3cd 100%
+        );
 
+    position:relative;
+
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    border:1px solid rgba(184,139,42,.18);
+
+    border-radius:50%;
+
+    top:-150px;
+    right:-130px;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    border:1px solid rgba(184,139,42,.14);
+
+    border-radius:50%;
+
+    bottom:-120px;
+    left:-100px;
 }
 
 .hero h3{
+    color:#ad8232;
 
-    color:#b88b2a;
+    font-size:21px;
 
-    font-size:24px;
+    font-weight:400;
 
-    margin-bottom:20px;
+    margin-bottom:25px;
 
+    position:relative;
+    z-index:2;
 }
 
 .hero h1{
+    color:#6e552d;
 
-    color:#7a5b1e;
+    font-family:Georgia,serif;
 
-    font-size:60px;
+    font-size:62px;
 
-    margin-bottom:20px;
+    font-weight:500;
 
+    letter-spacing:1px;
+
+    margin-bottom:22px;
+
+    position:relative;
+    z-index:2;
 }
 
 .hero p{
+    color:#777064;
 
-    font-size:24px;
+    font-size:21px;
 
-    color:#666;
+    margin-bottom:35px;
 
-    margin-bottom:40px;
-
+    position:relative;
+    z-index:2;
 }
 
-.btn{
+/* =========================================
+   زر تفاصيل الحفل
+========================================= */
 
+.btn{
     display:inline-block;
 
-    padding:15px 35px;
+    background:
+        linear-gradient(
+            135deg,
+            #c8a45d,
+            #a98032
+        );
 
-    background:#c8a35a;
+    color:white;
 
-    color:#fff;
+    padding:13px 35px;
 
-    border-radius:40px;
+    border-radius:50px;
+
+    font-size:17px;
+
+    box-shadow:
+        0 10px 25px rgba(135,98,35,.18);
 
     transition:.3s;
 
+    position:relative;
+    z-index:2;
 }
 
 .btn:hover{
+    transform:translateY(-3px);
 
-    background:#b58b38;
-
-    transform:scale(1.05);
-
+    box-shadow:
+        0 15px 30px rgba(135,98,35,.25);
 }
 
-/* =====================================
-   الكروت
-===================================== */
+/* =========================================
+   تفاصيل الحفل
+========================================= */
 
 #details{
+    padding:90px 20px;
 
-    padding:80px 20px;
-
+    background:#fbf8f2;
 }
 
+/* =========================================
+   الكروت
+========================================= */
+
 .card{
+    width:92%;
+    max-width:720px;
 
-    width:90%;
+    margin:25px auto;
 
-    max-width:700px;
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fdfaf5
+        );
 
-    margin:30px auto;
+    border-radius:25px;
 
-    background:#fff;
-
-    border-radius:20px;
-
-    padding:35px;
+    padding:35px 25px;
 
     text-align:center;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    border:1px solid rgba(184,139,42,.13);
 
+    box-shadow:
+        0 15px 40px rgba(75,60,40,.07);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #c7a257,
+            transparent
+        );
+}
+
+.card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 20px 45px rgba(75,60,40,.11);
 }
 
 .card h2{
+    color:#aa8135;
 
-    color:#b58b38;
-
-    font-size:30px;
+    font-size:24px;
 
     margin-bottom:20px;
+}
 
+.card h2 i{
+    margin-left:8px;
 }
 
 .card p{
-
-    font-size:22px;
-
-    color:#555;
+    color:#625d55;
 
     margin:10px 0;
 
+    font-size:19px;
 }
 
 .card a{
-
     display:inline-block;
 
-    margin-top:20px;
+    margin-top:18px;
 
-    padding:12px 30px;
+    background:#c6a052;
 
-    background:#c8a35a;
+    color:white;
 
-    color:#fff;
+    padding:11px 28px;
 
     border-radius:30px;
 
     transition:.3s;
-
 }
 
 .card a:hover{
+    background:#a98032;
 
-    background:#b58b38;
-
+    transform:translateY(-2px);
 }
+
+/* =========================================
+   العد التنازلي
+========================================= */
 
 #countdown{
+    margin-top:25px;
 
-    margin-top:20px;
+    color:#8d6b30;
 
-    font-size:34px;
+    font-size:28px;
 
-    color:#b58b38;
+    font-weight:700;
 
-    font-weight:bold;
+    line-height:1.8;
 
+    direction:rtl;
 }
-/* =====================================
+
+/* =========================================
    معرض الصور
-===================================== */
+========================================= */
 
 .gallery{
-
-    padding:80px 20px;
+    padding:90px 20px;
 
     text-align:center;
 
+    background:
+        linear-gradient(
+            180deg,
+            #f7eddd,
+            #fbf8f2
+        );
 }
 
 .gallery h2{
+    color:#9d7632;
 
-    color:#b58b38;
+    font-size:32px;
 
-    font-size:38px;
-
-    margin-bottom:35px;
-
+    margin-bottom:40px;
 }
 
 .images{
-
     display:flex;
 
     justify-content:center;
 
+    align-items:center;
+
     flex-wrap:wrap;
 
-    gap:20px;
+    gap:25px;
 
+    max-width:1000px;
+
+    margin:auto;
 }
 
 .images img{
+    width:300px;
 
-    width:280px;
-
-    height:350px;
+    height:380px;
 
     object-fit:cover;
 
-    border-radius:20px;
+    border-radius:22px;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    border:7px solid #fff;
+
+    box-shadow:
+        0 15px 35px rgba(60,45,25,.13);
 
     transition:.4s;
-
 }
 
 .images img:hover{
+    transform:
+        translateY(-7px)
+        scale(1.02);
 
-    transform:scale(1.05);
-
+    box-shadow:
+        0 20px 40px rgba(60,45,25,.2);
 }
 
-/* =====================================
+/* =========================================
    رسائل التهنئة
-===================================== */
+========================================= */
 
 .messages{
+    width:92%;
 
-    width:90%;
+    max-width:800px;
 
-    max-width:850px;
+    margin:90px auto;
 
-    margin:80px auto;
+    background:white;
 
-    background:#fff;
+    padding:40px 30px;
 
-    padding:35px;
+    border-radius:25px;
 
-    border-radius:20px;
+    border:1px solid rgba(184,139,42,.12);
 
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-
+    box-shadow:
+        0 15px 40px rgba(70,55,35,.07);
 }
 
 .messages h2{
-
-    color:#b58b38;
-
     text-align:center;
 
-    margin-bottom:25px;
+    color:#a17a32;
 
+    font-size:27px;
+
+    margin-bottom:28px;
 }
 
 .messages input,
 .messages textarea{
-
     width:100%;
 
-    padding:15px;
+    padding:15px 17px;
 
-    margin:12px 0;
+    margin:9px 0;
 
-    border:1px solid #ddd;
+    border:1px solid #e2dcd2;
 
-    border-radius:12px;
+    border-radius:14px;
 
-    font-size:18px;
+    background:#fdfbf8;
 
+    color:#444;
+
+    font-size:17px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+.messages input:focus,
+.messages textarea:focus{
+    border-color:#c5a05a;
+
+    box-shadow:
+        0 0 0 3px rgba(197,160,90,.1);
 }
 
 .messages textarea{
-
-    height:160px;
+    height:145px;
 
     resize:none;
-
 }
 
 .messages button{
-
     width:100%;
-
-    padding:15px;
 
     border:none;
 
+    padding:14px;
+
+    margin-top:10px;
+
     border-radius:35px;
 
-    background:#c8a35a;
+    background:
+        linear-gradient(
+            135deg,
+            #c8a45d,
+            #a98032
+        );
 
-    color:#fff;
+    color:white;
 
-    font-size:20px;
+    font-size:18px;
 
     cursor:pointer;
 
     transition:.3s;
-
 }
 
 .messages button:hover{
+    transform:translateY(-2px);
 
-    background:#b58b38;
-
+    box-shadow:
+        0 10px 20px rgba(135,98,35,.2);
 }
 
-.msg{
+.messages button:disabled{
+    opacity:.6;
+
+    cursor:not-allowed;
+}
+
+/* =========================================
+   زر الأرشيف
+========================================= */
+
+#archiveBtn{
+    background:#756d61;
+
+    margin-top:12px;
+}
+
+#archiveBtn:hover{
+    background:#5f584f;
+}
+
+/* =========================================
+   كلمة مرور الأرشيف
+========================================= */
+
+#passwordBox{
+    display:none;
 
     margin-top:20px;
 
-    background:#faf7f2;
+    padding:20px;
 
-    padding:18px;
+    border-radius:18px;
 
-    border-radius:15px;
+    background:#faf7f1;
 
-    border-right:5px solid #c8a35a;
+    border:1px solid #eee4d3;
 
+    text-align:center;
 }
 
-/* =====================================
-   رسالة النهاية
-===================================== */
+#passwordBox input{
+    margin:0 0 10px;
+}
+
+#passwordBox button{
+    background:#756d61;
+
+    margin-top:0;
+}
+
+#passwordError{
+    color:#b44141;
+
+    font-size:14px;
+
+    margin-top:10px;
+}
+
+/* =========================================
+   الرسائل داخل الأرشيف
+========================================= */
+
+#allMessages{
+    margin-top:25px;
+}
+
+.loading-messages,
+.empty-messages{
+    text-align:center;
+
+    padding:25px;
+
+    color:#888;
+}
+
+.msg{
+    background:#fdfaf5;
+
+    padding:20px;
+
+    border-radius:17px;
+
+    margin-top:15px;
+
+    border-right:4px solid #c7a257;
+
+    box-shadow:
+        0 5px 15px rgba(60,45,25,.05);
+}
+
+.msg h3{
+    color:#9c7532;
+
+    margin-bottom:8px;
+
+    font-size:19px;
+}
+
+.msg p{
+    color:#5e5a54;
+
+    line-height:1.9;
+
+    font-size:16px;
+
+    word-break:break-word;
+}
+
+.msg small{
+    display:block;
+
+    margin-top:10px;
+
+    color:#aaa;
+
+    font-size:12px;
+}
+
+/* =========================================
+   الرسالة الأخيرة
+========================================= */
 
 .thanks{
+    margin-top:80px;
 
-    margin-top:90px;
-
-    background:#f8f1e7;
-
-    padding:80px 20px;
+    background:
+        linear-gradient(
+            135deg,
+            #eee0c9,
+            #f7eddd
+        );
 
     text-align:center;
 
+    padding:85px 25px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.thanks::before,
+.thanks::after{
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    border:1px solid rgba(170,128,49,.16);
+
+    border-radius:50%;
+}
+
+.thanks::before{
+    top:-150px;
+    left:-100px;
+}
+
+.thanks::after{
+    bottom:-150px;
+    right:-100px;
 }
 
 .thanks h2{
+    color:#916d30;
 
-    color:#b58b38;
+    font-family:Georgia,serif;
 
-    font-size:38px;
+    font-size:36px;
 
     margin-bottom:25px;
 
+    position:relative;
+    z-index:2;
 }
 
 .thanks p{
-
-    max-width:850px;
+    max-width:800px;
 
     margin:auto;
 
-    font-size:22px;
+    line-height:2.1;
 
-    color:#555;
+    font-size:18px;
 
-    line-height:2;
+    color:#5f5a52;
 
+    position:relative;
+    z-index:2;
 }
 
-/* =====================================
+/* =========================================
    الفوتر
-===================================== */
+========================================= */
 
-footer{
-
-    background:#f3e6c7;
+.designer{
+    background:#403b34;
 
     text-align:center;
 
     padding:30px 20px;
 
+    border-top:3px solid #c5a05a;
 }
 
-footer p{
+.designer p{
+    font-size:16px;
 
-    margin:8px 0;
+    color:#ddd;
 
-    color:#555;
-
-    font-size:18px;
-
+    margin:7px 0;
 }
 
-footer strong{
-
-    color:#b58b38;
-
+.designer strong{
+    color:#d3b16b;
 }
 
-footer a{
-
-    color:#b58b38;
+.designer a{
+    color:#d3b16b;
 
     font-weight:bold;
-
 }
 
-/* =====================================
-   الموبايل
-===================================== */
-
-@media(max-width:768px){
-
-.hero h1{
-
-    font-size:40px;
-
+.designer a:hover{
+    text-decoration:underline;
 }
 
-.hero p{
-
-    font-size:20px;
-
-}
-
-.invite-card{
-
-    width:92%;
-
-}
-
-.invite-card h1{
-
-    font-size:42px;
-
-}
-
-.images img{
-
-    width:95%;
-
-    height:auto;
-
-}
-
-.card{
-
-    width:95%;
-
-}
-
-#countdown{
-
-    font-size:25px;
-
-}
+/* =========================================
+   زر الموسيقى
+========================================= */
 
 #musicBtn{
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
 
     width:55px;
 
     height:55px;
 
+    border:none;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c8a45d,
+            #a98032
+        );
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 25px rgba(70,50,25,.25);
+
+    z-index:9997;
+
+    transition:.3s;
 }
 
+#musicBtn:hover{
+    transform:scale(1.08);
 }
 
-.all-products-btn {
-    text-align: center;
-    margin-top: 35px;
+/* =========================================
+   القلوب المتحركة
+========================================= */
+
+.heart{
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:3;
 }
 
-.all-products-btn a {
-    display: inline-block;
-    padding: 14px 30px;
+/* =========================================
+   Scrollbar
+========================================= */
 
-    background: #111;
-    color: white;
-
-    text-decoration: none;
-
-    border-radius: 10px;
-
-    font-size: 17px;
-
-    transition: 0.3s;
+::-webkit-scrollbar{
+    width:8px;
 }
 
-.all-products-btn a:hover {
-    transform: translateY(-3px);
-    background: #e00000;
+::-webkit-scrollbar-track{
+    background:#f4eee5;
 }
 
-.product-image {
-    position: relative;
+::-webkit-scrollbar-thumb{
+    background:#c4a05c;
+
+    border-radius:10px;
 }
 
-.favorite-button {
-    position: absolute;
-
-    top: 12px;
-    left: 12px;
-
-    width: 42px;
-    height: 42px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: white;
-
-    color: #111;
-
-    font-size: 24px;
-
-    cursor: pointer;
-
-    box-shadow: 0 3px 10px rgba(0,0,0,.2);
-
-    z-index: 5;
+::-webkit-scrollbar-thumb:hover{
+    background:#a98136;
 }
 
-.favorite-button.active {
-    color: red;
+/* =========================================
+   الموبايل
+========================================= */
+
+@media(max-width:768px){
+
+    .welcome-card{
+        padding:20px;
+    }
+
+    .heart-circle{
+        width:85px;
+        height:85px;
+
+        font-size:34px;
+
+        margin-bottom:22px;
+    }
+
+    .welcome-card h1{
+        font-size:43px;
+    }
+
+    .and{
+        font-size:25px;
+
+        margin:7px 0;
+    }
+
+    .date{
+        font-size:16px;
+    }
+
+    .invite{
+        font-size:15px;
+    }
+
+    #openBtn{
+        padding:13px 45px;
+
+        font-size:18px;
+    }
+
+    .hero{
+        min-height:100svh;
+
+        padding:40px 20px;
+    }
+
+    .hero h3{
+        font-size:18px;
+    }
+
+    .hero h1{
+        font-size:40px;
+
+        line-height:1.3;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    #details{
+        padding:65px 12px;
+    }
+
+    .card{
+        width:96%;
+
+        padding:30px 18px;
+
+        border-radius:20px;
+    }
+
+    .card h2{
+        font-size:21px;
+    }
+
+    .card p{
+        font-size:17px;
+    }
+
+    #countdown{
+        font-size:21px;
+
+        line-height:2;
+    }
+
+    .gallery{
+        padding:65px 15px;
+    }
+
+    .gallery h2{
+        font-size:27px;
+    }
+
+    .images{
+        gap:18px;
+    }
+
+    .images img{
+        width:92%;
+
+        max-width:330px;
+
+        height:auto;
+
+        aspect-ratio:4 / 5;
+    }
+
+    .messages{
+        width:94%;
+
+        padding:30px 18px;
+
+        margin:65px auto;
+    }
+
+    .messages h2{
+        font-size:23px;
+    }
+
+    .thanks{
+        padding:65px 20px;
+    }
+
+    .thanks h2{
+        font-size:29px;
+    }
+
+    .thanks p{
+        font-size:16px;
+    }
+
+    #musicBtn{
+        width:50px;
+        height:50px;
+
+        right:15px;
+        bottom:15px;
+
+        font-size:18px;
+    }
+
 }
 
+/* =========================================
+   شاشات صغيرة جدًا
+========================================= */
+
+@media(max-width:380px){
+
+    .welcome-card h1{
+        font-size:37px;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
+
+    #countdown{
+        font-size:18px;
+    }
+
+    #musicBtn{
+        width:46px;
+        height:46px;
+    }
+
+}
