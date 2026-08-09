@@ -41,146 +41,131 @@ img{
    الصفحة الأولى
 ========================================= */
 
-.welcome-card{
+/* =====================================
+   الصفحة الأولى
+===================================== */
+
+.welcome-screen{
+
     position:fixed;
     inset:0;
 
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
 
-    text-align:center;
+    background:#fdfaf6;
 
-    background:#f8f1e5;
+    z-index:99999;
 
-    z-index:9999;
-
-    padding:25px;
 }
 
-/* الكارت */
+.invite-card{
 
-.welcome-card::before{
+    width:400px;
+    max-width:92%;
 
-    content:"";
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:40px 20px 20px;
+
+    text-align:center;
+
+    position:relative;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+}
+
+.top-heart{
 
     position:absolute;
 
-    width:calc(100% - 40px);
-    max-width:430px;
+    top:-35px;
+    left:50%;
 
-    height:560px;
+    transform:translateX(-50%);
 
-    background:#fffdf9;
-
-    border:1px solid #dfcda9;
-
-    border-radius:18px;
-
-    box-shadow:
-        0 15px 45px rgba(70,50,25,.12);
-
-    z-index:-1;
-}
-
-/* القلب */
-
-.heart-circle{
-
-    width:82px;
-    height:82px;
+    width:90px;
+    height:90px;
 
     border-radius:50%;
 
-    background:#c7a257;
-
-    color:white;
+    background:#b58b38;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    font-size:35px;
+    color:#fff;
 
-    margin-bottom:22px;
+    font-size:38px;
 
-    box-shadow:
-        0 8px 22px rgba(120,88,32,.2);
 }
 
-/* الأسماء */
+.invite-card h1{
 
-.welcome-card h1{
+    color:#b58b38;
 
-    color:#70562d;
+    font-size:55px;
 
-    font-family:Georgia,serif;
-
-    font-size:48px;
-
-    font-weight:500;
-
-    letter-spacing:1px;
-
-    line-height:1.1;
-
-    margin:0;
+    margin:10px 0;
 
 }
 
 .and{
 
-    font-family:Georgia,serif;
+    display:block;
 
-    font-size:26px;
+    margin:10px 0;
 
-    color:#b18a42;
+    color:#b58b38;
 
-    margin:7px 0;
+    font-size:30px;
 
 }
 
 .date{
 
-    color:#777064;
-
-    font-size:17px;
-
     margin-top:20px;
 
-}
+    color:#b58b38;
 
-.invite{
-
-    color:#888077;
-
-    font-size:16px;
-
-    margin:13px 25px 28px;
+    font-size:24px;
 
 }
 
-/* زر Open */
+.text{
+
+    margin:25px 0;
+
+    color:#b58b38;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+}
 
 #openBtn{
 
+    width:220px;
+
+    height:58px;
+
     border:none;
 
-    padding:13px 55px;
+    border-radius:50px;
 
-    border-radius:35px;
+    background:#b58b38;
 
-    background:#c5a052;
+    color:#fff;
 
-    color:white;
-
-    font-size:18px;
+    font-size:22px;
 
     cursor:pointer;
-
-    box-shadow:
-        0 8px 20px rgba(120,88,32,.18);
 
     transition:.3s;
 
@@ -188,18 +173,9 @@ img{
 
 #openBtn:hover{
 
-    background:#a98032;
-
-    transform:translateY(-2px);
+    transform:scale(1.05);
 
 }
-
-#openBtn:active{
-
-    transform:scale(.96);
-
-}
-
 /* الموبايل */
 
 @media(max-width:768px){
