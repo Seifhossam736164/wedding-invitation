@@ -62,6 +62,8 @@
 
 <!-- الموقع -->
 
+
+
 <div class="content">
 
 <section class="hero">
@@ -169,25 +171,50 @@
 
 <section class="messages">
 
-<h2>
+    <h2>
+        <i class="fa-solid fa-envelope-open"></i>
+        اترك تهنئتك للعروسين
+    </h2>
 
-<i class="fa-solid fa-envelope-open"></i>
+    <input
+        type="text"
+        id="name"
+        placeholder="اكتب اسمك"
+        maxlength="50"
+    >
 
-اترك تهنئتك للعروسين
+    <textarea
+        id="message"
+        placeholder="اكتب رسالتك للعروسين"
+        maxlength="500"
+    ></textarea>
 
-</h2>
+    <button id="sendMessageBtn" onclick="sendMessage()">
+        إرسال التهنئة
+    </button>
 
-<input id="name" type="text" placeholder="اكتب اسمك">
+    <button id="archiveBtn" onclick="openArchive()">
+        <i class="fa-solid fa-lock"></i>
+        أرشيف التهاني
+    </button>
 
-<textarea id="message" placeholder="اكتب رسالتك"></textarea>
+    <div id="passwordBox">
 
-<button onclick="sendMessage()">
+        <input
+            type="password"
+            id="archivePassword"
+            placeholder="كلمة مرور الأرشيف"
+        >
 
-إرسال
+        <button onclick="checkArchivePassword()">
+            دخول
+        </button>
 
-</button>
+        <p id="passwordError"></p>
 
-<div id="allMessages"></div>
+    </div>
+
+    <div id="allMessages"></div>
 
 </section>
 
