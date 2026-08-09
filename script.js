@@ -156,66 +156,382 @@ setInterval(() => {
 // ======================================
 // رسائل التهنئة
 // ======================================
+// ======================================
+// Supabase
+// ======================================
 
-let messages = JSON.parse(localStorage.getItem("messages")) || [];
+const SUPABASE_URL =
+"https://ewwxqsuzrwhbiyyshste.supabase.co";
 
-showMessages();
+const SUPABASE_KEY =
+"sb_publishable_NX_er_DE2uDS8rWjdM-NPg_-xqb_c7i";
 
-function sendMessage(){
 
-    const name = document.getElementById("name").value.trim();
+// ======================================
+// إعداد الأرشيف
+// ======================================
 
-    const message = document.getElementById("message").value.trim();
+const ARCHIVE_PASSWORD = "AhmedSara2026";
 
-    if(name==="" || message===""){
+const messagesBox =
+document.getElementById("allMessages");
 
-        alert("اكتب اسمك ورسالتك ❤️");
+let archiveOpen = false;
+
+
+// ======================================
+// إرسال التهنئة
+// ======================================
+
+async function sendMessage(){
+
+    const nameInput =
+    document.getElementById("name");
+
+    const messageInput =
+    document.getElementById("message");
+
+    const sendButton =
+    document.getElementById("sendMessageBtn");
+
+    const name =
+    nameInput.value.trim();
+
+    const message =
+    messageInput.value.trim();
+
+
+    if(name === "" || message === ""){
+
+        alert("من فضلك اكتب اسمك ورسالتك ❤️");
 
         return;
 
     }
 
-    messages.unshift({
 
-        name:name,
+    sendButton.disabled = true;
 
-        message:message,
+    sendButton.innerText =
+    "جاري الإرسال...";
 
-        date:new Date().toLocaleDateString("ar-EG")
 
-    });
+    try{
 
-    localStorage.setItem("messages",JSON.stringify(messages));
+        const response = await fetch(
 
-    document.getElementById("name").value="";
+            `${SUPABASE_URL}/rest/v1/messages`,
 
-    document.getElementById("message").value="";
+            {
 
-    showMessages();
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":
+                    "application/json",
+
+                    "apikey":
+                    SUPABASE_KEY,
+
+                    "Authorization":
+                    `Bearer ${SUPABASE_KEY}`,
+
+                    "Prefer":
+                    "return=minimal"
+
+                },
+
+                body:JSON.stringify({
+
+                    name:name,
+
+                    message:message
+
+                })
+
+            }
+
+        );
+
+
+        if(!response.ok){
+
+            console.error(
+                await response.text()
+            );
+
+            alert(
+                "حصلت مشكلة أثناء إرسال التهنئة."
+            );
+
+            return;
+
+        }
+
+
+        nameInput.value = "";
+
+        messageInput.value = "";
+
+
+        alert(
+            "تم إرسال تهنئتك بنجاح ❤️"
+        );
+
+
+        if(archiveOpen){
+
+            loadMessages();
+
+        }
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "تعذر الاتصال بقاعدة البيانات."
+        );
+
+
+    }finally{
+
+        sendButton.disabled = false;
+
+        sendButton.innerText =
+        "إرسال التهنئة";
+
+    }
 
 }
 
-function showMessages(){
 
-    const allMessages=document.getElementById("allMessages");
+// ======================================
+// فتح الأرشيف
+// ======================================
 
-    allMessages.innerHTML="";
+function openArchive(){
 
-    messages.forEach(item=>{
+    const passwordBox =
+    document.getElementById("passwordBox");
 
-        allMessages.innerHTML += `
-        <div class="msg">
+    passwordBox.style.display =
+    "block";
 
-            <h3>💖 ${item.name}</h3>
+    document
+    .getElementById("archivePassword")
+    .focus();
 
-            <p>${item.message}</p>
+}
 
-            <small>${item.date}</small>
 
-        </div>
+// ======================================
+// التحقق من كلمة المرور
+// ======================================
+
+function checkArchivePassword(){
+
+    const password =
+    document
+    .getElementById("archivePassword")
+    .value;
+
+
+    const error =
+    document
+    .getElementById("passwordError");
+
+
+    if(password === ARCHIVE_PASSWORD){
+
+        document
+        .getElementById("passwordBox")
+        .style.display = "none";
+
+
+        document
+        .getElementById("archiveBtn")
+        .style.display = "none";
+
+
+        archiveOpen = true;
+
+        messagesBox.style.display =
+        "block";
+
+
+        loadMessages();
+
+
+    }else{
+
+        error.textContent =
+        "كلمة المرور غير صحيحة ❌";
+
+        document
+        .getElementById("archivePassword")
+        .value = "";
+
+    }
+
+}
+
+
+// ======================================
+// تحميل الرسائل
+// ======================================
+
+async function loadMessages(){
+
+    messagesBox.innerHTML = `
+        <p class="loading-messages">
+            جاري تحميل التهاني...
+        </p>
+    `;
+
+
+    try{
+
+        const response = await fetch(
+
+            `${SUPABASE_URL}/rest/v1/messages?select=*&order=created_at.desc`,
+
+            {
+
+                method:"GET",
+
+                headers:{
+
+                    "apikey":
+                    SUPABASE_KEY,
+
+                    "Authorization":
+                    `Bearer ${SUPABASE_KEY}`
+
+                }
+
+            }
+
+        );
+
+
+        if(!response.ok){
+
+            console.error(
+                await response.text()
+            );
+
+            messagesBox.innerHTML = `
+                <p>
+                    حصلت مشكلة في تحميل الأرشيف.
+                </p>
+            `;
+
+            return;
+
+        }
+
+
+        const messages =
+        await response.json();
+
+
+        if(messages.length === 0){
+
+            messagesBox.innerHTML = `
+                <p class="empty-messages">
+                    لا توجد تهاني حتى الآن ❤️
+                </p>
+            `;
+
+            return;
+
+        }
+
+
+        messagesBox.innerHTML = "";
+
+
+        messages.forEach(item => {
+
+            const box =
+            document.createElement("div");
+
+            box.className = "msg";
+
+
+            const name =
+            document.createElement("h3");
+
+            name.textContent =
+            "💖 " + item.name;
+
+
+            const text =
+            document.createElement("p");
+
+            text.textContent =
+            item.message;
+
+
+            const date =
+            document.createElement("small");
+
+            date.textContent =
+            formatDate(item.created_at);
+
+
+            box.appendChild(name);
+
+            box.appendChild(text);
+
+            box.appendChild(date);
+
+
+            messagesBox.appendChild(box);
+
+        });
+
+
+    }catch(error){
+
+        console.error(error);
+
+        messagesBox.innerHTML = `
+            <p>
+                تعذر الاتصال بالأرشيف.
+            </p>
         `;
 
-    });
+    }
+
+}
+
+
+// ======================================
+// تنسيق التاريخ
+// ======================================
+
+function formatDate(date){
+
+    return new Date(date)
+    .toLocaleDateString(
+
+        "ar-EG",
+
+        {
+
+            year:"numeric",
+
+            month:"long",
+
+            day:"numeric"
+
+        }
+
+    );
 
 }
 // ======================================
